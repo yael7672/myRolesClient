@@ -11,5 +11,9 @@ export const routes: Routes = [
     path: 'dashboard',
     canActivate: [() => inject(AuthGuard).canActivate()],
     loadChildren: () => import('./dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];

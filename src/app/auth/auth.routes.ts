@@ -5,5 +5,9 @@ export const AUTH_ROUTES: Routes = [
   {
     path: '',
     component: LoginComponent
-  }
+  },
+  //   {
+  //   path: 'forgot-password',
+  //   component: ForgotPasswordComponent
+  // }
 ];
