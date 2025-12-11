@@ -1,0 +1,19 @@
+<section class="page home-page">
+  <h1>ברוכה הבאה למרכז התרבות 🎭</h1>
+  <p>גלי אירועים חדשים, רכשי כרטיסים וקבלי המלצות מותאמות.</p>
+
+  <a routerLink="/events" class="btn-primary">לכל האירועים</a>
+
+  <section class="featured" *ngIf="featuredEvents$ | async as events">
+    <h2>אירועים מומלצים</h2>
+    <div class="events-grid">
+      <article class="event-card" *ngFor="let event of events">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.shortDescription }}</p>
+        <a [routerLink]="['/events', event.id]" class="btn-link">
+          לפרטים
+        </a>
+      </article>
+    </div>
+  </section>
+</section>

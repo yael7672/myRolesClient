@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AppService } from '../app-service.service';
-import { PopUpServiceService } from '../pop-up-service.service';
+import { AppService } from '../../app.service';
+import { PopUpServiceService } from '../../pop-up.service';
+
 
 @Component({
   selector: 'app-pop-up',
@@ -23,11 +24,7 @@ export class PopUpComponent implements OnInit {
   }
   closePopUp() {
     
-   if(this.whichPopUpOpen.ProjectContentItemBySpesificDate)
-   {
-    this.popUpService.setDetailsOfWorkingHoursEmployee(true);
-    this.popUpService.setDetailsOfWorkingHoursEmployeeForAdmin(true);
-   }
+  
     this.appService.setIsPopUpOpen(false);
     this.popUpService.setClosePopUp();
   }

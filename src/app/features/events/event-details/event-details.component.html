@@ -1,0 +1,46 @@
+<section class="page event-details" *ngIf="event$ | async as event; else loading">
+  <ng-container *ngIf="event; else notFound">
+    <div class="event-header">
+      <img
+        *ngIf="event.imageUrl"
+        [src]="event.imageUrl"
+        [alt]="event.title"
+        class="event-image"
+      />
+      <div class="event-info">
+        <h1>{{ event.title }}</h1>
+        <p class="meta">
+          {{ event.date }} • {{ event.time }} • {{ event.location }} – {{ event.hallName }}
+        </p>
+        <p class="price">כרטיסים החל מ־{{ event.basePrice }} ₪</p>
+      </div>
+    </div>
+
+    <section class="event-body">
+      <h2>על המופע</h2>
+      <p>{{ event.longDescription }}</p>
+    </section>
+
+    <section class="event-actions">
+      <a
+        class="btn-primary"
+        [routerLink]="['/booking', event.id]"
+      >
+        בחרי תאריך ורכשי כרטיס
+      </a>
+
+      <a routerLink="/events" class="btn-link">
+        ← חזרה לרשימת האירועים
+      </a>
+    </section>
+  </ng-container>
+</section>
+
+<ng-template #loading>
+  <p>טוען פרטי אירוע...</p>
+</ng-template>
+
+<ng-template #notFound>
+  <p>האירוע לא נמצא.</p>
+  <a routerLink="/events" class="btn-link">חזרה לאירועים</a>
+</ng-template>

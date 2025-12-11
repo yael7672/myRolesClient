@@ -1,11 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppService } from '../app-service.service';
-import { ButtonWorkingTaskService } from '../button-working-task.service';
-import { MenuComponent } from '../menu/menu.component';
-import { PopUpServiceService } from '../pop-up-service.service';
-import { UserServiceService } from '../user-service.service';
+import { PopUpServiceService } from '../../pop-up.service';
+import { AppService } from '../../app.service';
+
 
 @Component({
   selector: 'app-smart-card',
@@ -17,8 +15,8 @@ export class SmartCardComponent implements OnInit {
   menuCompo:any
   constructor(public router: Router,
     private popUpService: PopUpServiceService,
-    private userService: UserServiceService,
-    private appService: AppService, private buttonWorkingTaskService: ButtonWorkingTaskService, private datePipe: DatePipe) {
+    private userService: PopUpServiceService,
+    private appService: AppService, private datePipe: DatePipe) {
    }
   @Input() src!: string;
   @Input() thArr!: any;

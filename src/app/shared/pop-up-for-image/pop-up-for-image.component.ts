@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AppService } from '../app-service.service';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-pop-up-for-image',

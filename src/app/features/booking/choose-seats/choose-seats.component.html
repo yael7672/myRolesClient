@@ -1,0 +1,58 @@
+<section class="page booking-page">
+  <h1>בחירת מקומות באולם</h1>
+
+  <p class="subtitle">
+    לחצי על המקומות הפנויים כדי לבחור אותם.
+  </p>
+
+  <div class="screen">במה</div>
+
+  <div class="seats-grid">
+    <div
+      class="seat-row"
+      *ngFor="let row of seats"
+    >
+      <button
+        class="seat"
+        [ngClass]="seat.status"
+        *ngFor="let seat of row"
+        (click)="toggleSeat(seat)"
+      >
+        {{ seat.row }}-{{ seat.number }}
+      </button>
+    </div>
+  </div>
+
+  <div class="summary">
+    <span>נבחרו {{ selectedCount }} מקומות</span>
+
+    <button
+      class="btn-primary"
+      [disabled]="selectedCount === 0"
+      (click)="openConfirm()"
+    >
+      המשך לתשלום
+    </button>
+  </div>
+
+  <!-- PopUp + MassgeToUser -->
+  <app-pop-up
+    *ngIf="showConfirmPopup"
+    [title]="'אישור הזמנה'"
+    [ifX]="true"
+  >
+    <div body>
+      <app-massge-to-user
+        [massgeUserHeader]="'לאשר הזמנה?'"
+        [massgeUserBody1]="'בחרת ' + selectedCount + ' מקומות'"
+        [massgeUserBody2]="'לאחר האישור תועברי לתשלום'"
+        [textOfBtnYes]="'אישור'"
+        [textOfBtnNo]="'ביטול'"
+        [ifButton]="true"
+        (clickYes)="confirmBooking()"
+        (clickNo)="closeConfirm()"
+      >
+      </app-massge-to-user>
+    </div>
+  </app-pop-up>
+</section>

@@ -1,0 +1,58 @@
+.booking-page {
+  .subtitle {
+    margin-bottom: 1.2rem;
+    opacity: 0.85;
+  }
+
+  .showtimes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .showtime-card {
+    border-radius: 16px;
+    background: #151b30;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.9rem 1rem;
+    text-align: right;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .showtime-card:hover {
+    transform: translateY(-2px);
+    border-color: #ffb347;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .datetime {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+
+  .date {
+    opacity: 0.9;
+  }
+
+  .time {
+    opacity: 0.8;
+  }
+
+  .hall {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .price {
+    margin-top: 0.4rem;
+    font-weight: 600;
+    color: #ffdd7a;
+  }
+}

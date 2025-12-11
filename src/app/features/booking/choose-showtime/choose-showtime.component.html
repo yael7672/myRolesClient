@@ -1,0 +1,41 @@
+<p>choose-showtime works!</p>
+<section class="page booking-page">
+  <ng-container *ngIf="event$ | async as event; else loading">
+    <h1>בחירת מופע – {{ event?.title }}</h1>
+
+    <p class="subtitle">
+      בחרי תאריך ושעה עבור האירוע.
+    </p>
+
+    <ng-container *ngIf="showtimes$ | async as showtimes; else noShowtimes">
+      <div class="showtimes-list">
+        <button
+          class="showtime-card"
+          *ngFor="let s of showtimes"
+          (click)="selectShowtime(event!.id, s.id)"
+        >
+          <div class="datetime">
+            <span class="date">{{ s.date }}</span>
+            <span class="time">{{ s.time }}</span>
+          </div>
+          <div class="hall">
+            {{ s.hallName }}
+          </div>
+          <div class="price">
+            מ־{{ s.basePrice }} ₪
+          </div>
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>טוען נתונים...</p>
+  </ng-template>
+
+  <ng-template #noShowtimes>
+    <p>לא נמצאו מופעים עבור אירוע זה.</p>
+  </ng-template>
+
+  <a routerLink="/events" class="btn-link">← חזרה לאירועים</a>
+</section>

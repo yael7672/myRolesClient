@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppService } from '../app-service.service';
-import { PopUpServiceService } from '../pop-up-service.service';
+import { PopUpServiceService } from '../../pop-up.service';
+import { AppService } from '../../app.service';
+
 
 @Component({
   selector: 'app-smart-table',
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.css']
+  
 })
 export class SmartTableComponent implements OnInit {
   systemGuid: any;
@@ -74,8 +76,8 @@ export class SmartTableComponent implements OnInit {
     this.popUpService.getKindOfPopUp().subscribe(res => {
       this.isPopUpOpen = res;
     })
-    var appProperties = this.appService.getAppProperties()
-    this.isUnder1100 = appProperties.isUnder1680$.value;
+    // var appProperties = this.appService.getAppProperties()
+    // this.isUnder1100 = appProperties.isUnder1680$.value;
     console.log(this.isUnder1100);
   }
   ngOnInit(): void {
